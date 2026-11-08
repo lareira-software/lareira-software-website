@@ -17,8 +17,8 @@ start=html.index('<script defer>');end=html.rindex('</script>')+len('</script>')
 notice=(example/'fonts/OFL-archivo.txt').read_text()
 html=html.replace('</head>','<!-- Archivo font: see embedded SIL Open Font License notice below. -->\n</head>')
 html+='\n<!-- Font license (SIL OFL):\n'+notice.replace('--','—')+'\n-->\n'
-note_start=html.index('<p class="review-note">')+len('<p class="review-note">')
-note_end=html.index('</p>',note_start)
-html=html[:note_start]+'Modo revisión: envío desactivado. Usa datos inventados.'+html[note_end:]
+review_note='<p class="review-note">Modo revisión: envío desactivado. Usa datos inventados.</p>'
+assert html.count('</aside>')==1
+html=html.replace('</aside>',review_note+'</aside>')
 
 out=root/'.git/quiz-review/revision-portatil.html';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(html);print(out);print('BYTES',out.stat().st_size)

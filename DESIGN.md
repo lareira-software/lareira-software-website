@@ -76,11 +76,11 @@ Sistema base de Lareira y de todas las webs de clientes. Las webs de clientes **
 - **Fila destacada**: la fila recomendada va sobre `--profundo` a todo el ancho, con texto blanco y `--sobre-mar`.
 - **Pegatina**: círculo `--lume` con texto `--tinta` 700 (6:1). Una por pantalla como mucho. Para «Recomendado» o «Precio de lanzamiento».
 - **Tira de datos**: tres celdas separadas por rayas verticales, número estrecho grande + palabra. Va en la portada.
-- **Botón principal**: fondo `--papel` sobre azul o `--mar` sobre blanco, texto 650, radio 6px, icono de WhatsApp SVG a la izquierda, alto mínimo 52px. Al pulsar `scale(.97)` en 160ms.
+- **Botón principal**: fondo `--papel` sobre azul o `--mar` sobre blanco, texto 650, radio 6px, sin icono de WhatsApp cuando lleva al cuestionario, alto mínimo 52px. Al pulsar `scale(.97)` en 160ms.
 - **Botón secundario**: solo texto subrayado (offset .2em, grosor 1.5px).
 - **Móvil de ejemplo**: marco de 30px de radio, pantalla con una web de ejemplo marcada «Web de ejemplo». Recibe el nombre del visitante desde un campo y lo pinta en directo.
 - **Preguntas**: `<details>` con raya, chevron SVG que gira 180° (200ms ease-out), contenido que se abre con altura animada (interpolate-size donde exista).
-- **Barra móvil**: fija abajo, `--profundo`, botón WhatsApp a todo el ancho, aparece al salir la portada (transform 260ms ease-out), respeta `env(safe-area-inset-bottom)`.
+- **Barra móvil**: fija abajo, `--profundo`, botón del cuestionario a todo el ancho, aparece al salir la portada (transform 260ms ease-out), respeta `env(safe-area-inset-bottom)`.
 - **Hueco de foto**: `<figure class="hueco">` con proporción fija y un fondo `--mar` con el hórreo en `--linea-mar`; se sustituye por `<img>` sin tocar el CSS.
 
 ## 5. Movimiento (reglas de Emil)
