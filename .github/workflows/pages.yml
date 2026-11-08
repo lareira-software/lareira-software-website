@@ -38,6 +38,11 @@ jobs:
         run: |
           mkdir _site
           cp -r index.html CNAME img fonts _site/
+          mkdir -p _site/brief/fonts
+          cp brief/index.html brief/app.js brief/model.js brief/style.css _site/brief/
+          cp brief/fonts/* _site/brief/fonts/
+          sed -i 's#<meta name="brief-endpoint" content="/api/brief">#<meta name="brief-endpoint" content="https://api.lareirasoftware.com/api/brief">#' _site/brief/index.html
+          grep -q 'content="https://api.lareirasoftware.com/api/brief"' _site/brief/index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

@@ -1,0 +1,43 @@
+name: Pruebas del cuestionario
+on:
+  pull_request:
+    branches: [main]
+    paths: ['brief/**', 'backend/**', 'deploy/**', '.github/workflows/brief-tests.yml']
+  push:
+    branches: [main]
+    paths: ['brief/**', 'backend/**', 'deploy/**', '.github/workflows/brief-tests.yml']
+permissions:
+  contents: read
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts
+        working-directory: backend
+      - run: npm test
+        working-directory: backend
+      - run: node --test brief/tests/*.test.mjs
+      - name: Validar stack sin secretos reales
+        run: |
+          export LAREIRA_IMAGE=lareira-brief:ci
+          export LAREIRA_SMTP_USER_SECRET=ci_user
+          export LAREIRA_SMTP_PASSWORD_SECRET=ci_password
+          docker stack config -c deploy/lareira-brief.yml >/dev/null
+          docker stack config -c deploy/lareira-brief.yml -c deploy/lareira-mail.yml >/dev/null
+      - name: Construir y probar contenedor cerrado
+        run: |
+          set -eu
+          docker build --build-arg RELEASE_SHA=${{ github.sha }} -t lareira-brief:ci backend
+          cid=$(docker run -d --rm --network none --read-only --cap-drop ALL --memory 128m --cpus 0.30 lareira-brief:ci)
+          trap 'docker stop --time 5 "$cid" >/dev/null' EXIT
+          for attempt in $(seq 1 20); do
+            if docker exec "$cid" node healthcheck.mjs; then break; fi
+            sleep 1
+          done
+          docker exec "$cid" node healthcheck.mjs
+          docker exec "$cid" node --input-type=module -e "const h=await(await fetch('http://127.0.0.1:4180/healthz')).json();if(h.acceptingSubmissions!==false||h.release!==process.env.RELEASE_SHA)process.exit(1);const r=await fetch('http://127.0.0.1:4180/api/brief',{method:'POST',body:'{}'});if(r.status!==503)process.exit(1)"
