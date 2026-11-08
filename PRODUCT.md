@@ -24,20 +24,20 @@ A team of two who live on the Costa da Morte and work with accommodations, surf 
 
 ## Operating Context
 
-1. Owner writes on WhatsApp. 2. In 2–3 days Lareira prepares a free mockup with the owner's name, photos and Google reviews. 3. Shown in a short videocall; if they like it, it continues; if not, nothing happens. 4. In 7 working days the web is live and on Google. Deadlines count from receiving photos, texts and access.
+1. Owner writes on WhatsApp. 2. Lareira prepares a free mockup (no fixed turnaround promised; one mockup and one round of feedback per business) with the owner's name, photos and Google reviews. 3. Shown in a short videocall; if they like it, it continues; if not, nothing happens. 4. In 7–15 working days the web is live and on Google. Deadlines count from mockup approval, first payment and receiving photos, texts and access.
 
 ## Capabilities and Constraints
 
 Offer (exact, do not invent others):
-- Web Esencial — 450 € — 7 working days — one-page web; info, services and prices; Google reviews; map; WhatsApp or call button.
-- Pack Arranque (recommended) — 490 € launch price (was 550 €) — 7 working days — everything in Esencial; Google profile reviewed; web linked in the profile.
-- Pack Negocio — 900 € — 15 working days — 5-page web; Google profile reviewed; contact form.
-- All packs: Spanish and English, basic technical SEO, legal notice and cookies, domain and hosting for the first year.
-- Upgrades: +100 € Esencial→Arranque, +350 € Arranque→Negocio.
-- Optional maintenance 80 €/year (domain+hosting renewal, one review, 2 changes). Social media 350 €/month, no lock-in.
-- Add-ons: third language 120 €; availability calendar (Google Calendar or Booking/Airbnb iCal) 100 €; tool connection 50 €; selling a few products from 350 €; blog 750–850 €; online bookings and appointments 850 €; full online shop from 1.900 €.
-- Payment 50 % on start, 50 % on delivery. Domain always in the client's name.
-- Structured data priceRange "450 € – 900 €". Local SEO: one block per town with its own text; `ProfessionalService` with `areaServed` and `makesOffer`; `FAQPage`.
+- Web base — 490 € VAT included — 7–15 working days (Mon–Fri, no holidays) — one-page web; info, services and prices; Google reviews; map; WhatsApp or call button; up to two languages; initial local SEO; initial review of the Google profile with the web linked; first year of domain and hosting; one small content update in the first year.
+- Web ampliada — 840 € VAT included (Web base + 350 €) — deadline in the quote — everything in Web base plus 5 pages and contact form.
+- Both: legal notice and cookies. Single offer; no "launch price" wording.
+- Extra small changes after delivery: from 55 € VAT included per grouped intervention; quote first, paid in full in advance.
+- Renewal from the second year: 150 €/year VAT included (domain+hosting renewal, site kept running, one small update). Support: Mon–Fri except holidays; first reply within two working days.
+- Social media 350 €/month, no lock-in (kept as it was; to confirm).
+- Add-ons: third language 120 €; availability calendar (Google Calendar or Booking/Airbnb iCal) 100 €; tool connection 50 €; selling a few products from 350 €; blog 750–850 €; online bookings and appointments from 850 €; full online shop from 1.900 €. Anything beyond the offer gets a closed quote before starting.
+- Payment 50 % on start, 50 % on delivery (kept from the previous site; to confirm). All prices VAT included. Domain always in the client's name.
+- Structured data priceRange "490 € – 840 €". Local SEO: one block per town with its own text; `ProfessionalService` with `areaServed` and `makesOffer`; `FAQPage`.
 - Contact: WhatsApp +34 619 38 90 56, Instagram @lareirasoftwarecdm (may change to @lareira.web). No public physical address.
 - Structure must allow adding zones (A Coruña, Galicia, Tenerife) later.
 

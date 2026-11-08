@@ -14,7 +14,7 @@ Sistema base de Lareira y de todas las webs de clientes. Las webs de clientes **
 |---|---|---|
 | Mundo | La tablilla de precios de la lonxa, la pescadería y el bar | Los nombres y matrículas pintados a mano en los cascos de los barcos de Fisterra, Muxía y Camariñas |
 | Material | Azaulejo blanco, azul de caixa de lonxa, pegatina naranja, números estrechos | Casco blanco y azul, franja de flotación, letra pintada, boya naranja |
-| Primera pantalla | Titular + tira de tres datos en grande (desde 450 €, 7 días, ES/EN) + móvil que se renombra con el negocio del visitante | Titular pintado como nombre de barco, matrícula «CO-» como detalle, móvil en un muelle |
+| Primera pantalla | Titular + tira de tres datos en grande (490 €, 7–15 días, ES/EN) + móvil que se renombra con el negocio del visitante | Titular pintado como nombre de barco, matrícula «CO-» como detalle, móvil en un muelle |
 | Por qué funciona | El precio cerrado es lo que más confianza da (ver REFERENTES.md); vale igual para un bar, una peluquería o un taller | Muy reconocible en la costa, mucho carácter |
 | Riesgo | Si se exagera, «huele a pescado»: el mundo queda implícito, nunca se dibujan peces ni cajas | Tópico marinero (anclas, cuerdas), poco claro para negocios de interior (Vimianzo), no ayuda a leer precios |
 
