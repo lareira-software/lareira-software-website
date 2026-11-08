@@ -1,0 +1,10 @@
+*
+!Dockerfile
+!.dockerignore
+!package.json
+!package-lock.json
+!server.mjs
+!smtp.mjs
+!runtime.mjs
+!start.mjs
+!healthcheck.mjs

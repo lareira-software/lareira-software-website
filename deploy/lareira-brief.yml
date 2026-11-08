@@ -1,0 +1,68 @@
+version: "3.8"
+services:
+  brief:
+    image: ${LAREIRA_IMAGE:?Set an immutable reviewed LAREIRA_IMAGE}
+    user: "1000:1000"
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m,mode=1777
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "4180"
+      SUBMISSIONS_ENABLED: ${LAREIRA_SUBMISSIONS_ENABLED:-false}
+      ALLOWED_ORIGINS: https://lareirasoftware.com,https://www.lareirasoftware.com
+      CONTACT_FROM: ${LAREIRA_CONTACT_FROM:-}
+      CONTACT_TO: lareirasoftwarecdm@gmail.com
+      SMTP_HOST: ${LAREIRA_SMTP_HOST:-}
+      SMTP_PORT: ${LAREIRA_SMTP_PORT:-587}
+      SMTP_USER_FILE: /run/secrets/lareira_smtp_user
+      SMTP_PASS_FILE: /run/secrets/lareira_smtp_password
+    networks: [proxy]
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "2"
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.30"
+          memory: 128M
+        reservations:
+          memory: 48M
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+        monitor: 30s
+      rollback_config:
+        parallelism: 1
+        order: stop-first
+      labels:
+        traefik.enable: ${LAREIRA_PUBLIC_ENABLED:-false}
+        traefik.swarm.network: proxy
+        traefik.http.routers.lareira-brief.rule: Host(`${LAREIRA_API_HOST:-api.lareirasoftware.com}`)
+        traefik.http.routers.lareira-brief.entrypoints: websecure
+        traefik.http.routers.lareira-brief.tls: "true"
+        traefik.http.routers.lareira-brief.tls.certresolver: letsencrypt
+        traefik.http.routers.lareira-brief.middlewares: lareira-brief-rate,lareira-brief-headers
+        traefik.http.middlewares.lareira-brief-rate.ratelimit.average: "6"
+        traefik.http.middlewares.lareira-brief-rate.ratelimit.period: 1m
+        traefik.http.middlewares.lareira-brief-rate.ratelimit.burst: "3"
+        traefik.http.middlewares.lareira-brief-headers.headers.contentTypeNosniff: "true"
+        traefik.http.middlewares.lareira-brief-headers.headers.referrerPolicy: no-referrer
+        traefik.http.services.lareira-brief.loadbalancer.server.port: "4180"
+        traefik.http.services.lareira-brief.loadbalancer.healthcheck.path: /healthz
+        traefik.http.services.lareira-brief.loadbalancer.healthcheck.interval: 30s
+networks:
+  proxy:
+    external: true

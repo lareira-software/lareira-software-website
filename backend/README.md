@@ -15,13 +15,13 @@ Las pruebas usan datos sintéticos, HTTP local y un servidor SMTP de prueba en `
 
 ## Configuración real (todavía no realizada)
 
-Copiar `.env.example` a `.env` e introducir los valores por el canal seguro autorizado, nunca en Git ni por chat. `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` y `CONTACT_FROM` son obligatorios. `CONTACT_FROM` tiene que ser un remitente autorizado por el proveedor elegido. El destinatario por defecto es `lareirasoftwarecdm@gmail.com`; no lo elige el visitante. El remitente del visitante nunca sustituye el nuestro: solo se usa como Reply-To cuando ha pedido respuesta por email.
+Copiar `.env.example` a `.env` e introducir los valores por el canal seguro autorizado, nunca en Git ni por chat. En Swarm, `SMTP_USER_FILE` y `SMTP_PASS_FILE` leen secretos montados sin recortar ni alterar sus valores; no combinar cada variable con su equivalente `_FILE`. `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` y `CONTACT_FROM` son obligatorios. `CONTACT_FROM` tiene que ser un remitente autorizado por el proveedor elegido. El destinatario por defecto es `lareirasoftwarecdm@gmail.com`; no lo elige el visitante. El remitente del visitante nunca sustituye el nuestro: solo se usa como Reply-To cuando ha pedido respuesta por email.
 
 ```sh
 npm start
 ```
 
-Arranca solo en loopback (`127.0.0.1:4180` por defecto). Fallará al arrancar si falta configuración. No crea cuentas ni configura DNS, SMTP o servicios de producción.
+Arranca en loopback (`127.0.0.1:4180` por defecto). Por defecto `SUBMISSIONS_ENABLED=false`: salud disponible y recepción cerrada (503), sin exigir ni utilizar SMTP. Solo después de configurar correo y completar las condiciones de publicación se activa `SUBMISSIONS_ENABLED=true`; en ese modo falla al arrancar si falta configuración. No crea cuentas ni configura DNS. Para contenedores y despliegue ver `../deploy/README.md`.
 
 GitHub Pages **no ejecuta Node**. Para publicar: elegir un host/backend, configurar un proxy HTTPS hacia el puerto local o un endpoint HTTPS separado, fijar la meta `brief-endpoint` de `brief/index.html` a esa URL y configurar `ALLOWED_ORIGINS` con los orígenes exactos de la web. El valor `/api/brief` sirve para mismo origen/pruebas; no es una API existente en GitHub Pages. No publicar el `.env`, esta carpeta ni `node_modules` en Pages. Revisar permisos/dominio del remitente y hacer una prueba de recepción real autorizada. Todo despliegue, DNS y gasto siguen pendientes de aprobación.
 
