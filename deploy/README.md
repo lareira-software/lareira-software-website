@@ -16,7 +16,7 @@ node --test brief/tests/*.test.mjs
 docker --context desktop-linux build --build-arg RELEASE_SHA="$(git rev-parse HEAD)" -t "lareira-brief:$(git rev-parse HEAD)" backend
 ```
 
-La imagen usa Node 24 Alpine por digest, dependencia por lockfile, contexto permitido sin .env, usuario no-root, raíz de solo lectura, capacidades eliminadas y tmpfs. Swarm limita a 128 MiB / 0,30 CPU.
+La imagen usa Node 24 Alpine por digest, dependencia por lockfile, contexto permitido sin .env, usuario no-root, raíz de solo lectura, capacidades eliminadas, sin montajes de escritura. Swarm limita a 128 MiB / 0,30 CPU.
 
 Sobre el manager del VPS autorizado, con la imagen y revisión revisadas:
 

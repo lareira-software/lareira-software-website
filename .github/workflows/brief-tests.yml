@@ -33,7 +33,7 @@ jobs:
         run: |
           set -eu
           docker build --build-arg RELEASE_SHA=${{ github.sha }} -t lareira-brief:ci backend
-          cid=$(docker run -d --rm --network none --read-only --cap-drop ALL --memory 128m --cpus 0.30 --tmpfs /tmp:rw,noexec,nosuid,size=16m,mode=1777 lareira-brief:ci)
+          cid=$(docker run -d --rm --network none --read-only --cap-drop ALL --memory 128m --cpus 0.30 lareira-brief:ci)
           trap 'docker stop --time 5 "$cid" >/dev/null' EXIT
           for attempt in $(seq 1 20); do
             if docker exec "$cid" node healthcheck.mjs; then break; fi

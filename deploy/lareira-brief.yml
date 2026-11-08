@@ -6,8 +6,6 @@ services:
     init: true
     read_only: true
     cap_drop: [ALL]
-    tmpfs:
-      - /tmp:rw,noexec,nosuid,size=16m,mode=1777
     environment:
       HOST: "0.0.0.0"
       PORT: "4180"
