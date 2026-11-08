@@ -15,7 +15,7 @@ Las pruebas usan datos sintéticos, HTTP local y un servidor SMTP de prueba en `
 
 ## Configuración real (todavía no realizada)
 
-Copiar `.env.example` a `.env` e introducir los valores por el canal seguro autorizado, nunca en Git ni por chat. En Swarm, `SMTP_USER_FILE` y `SMTP_PASS_FILE` leen secretos montados sin recortar ni alterar sus valores; no combinar cada variable con su equivalente `_FILE`. `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` y `CONTACT_FROM` son obligatorios. `CONTACT_FROM` tiene que ser un remitente autorizado por el proveedor elegido. El destinatario por defecto es `lareirasoftwarecdm@gmail.com`; no lo elige el visitante. El remitente del visitante nunca sustituye el nuestro: solo se usa como Reply-To cuando ha pedido respuesta por email.
+Copiar `.env.example` a `.env` e introducir los valores por el canal seguro autorizado, nunca en Git ni por chat. En Swarm, `SMTP_USER_FILE` y `SMTP_PASS_FILE` leen secretos montados sin recortar ni alterar sus valores; no combinar cada variable con su equivalente `_FILE`. `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` y `CONTACT_FROM` son obligatorios. `CONTACT_FROM` tiene que ser un remitente autorizado por el proveedor elegido. El destinatario por defecto es `info@lareirasoftware.com`; no lo elige el visitante. El remitente del visitante nunca sustituye el nuestro: solo se usa como Reply-To cuando ha pedido respuesta por email.
 
 ```sh
 npm start

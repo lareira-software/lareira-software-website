@@ -12,7 +12,7 @@ services:
       SUBMISSIONS_ENABLED: ${LAREIRA_SUBMISSIONS_ENABLED:-false}
       ALLOWED_ORIGINS: https://lareirasoftware.com,https://www.lareirasoftware.com
       CONTACT_FROM: ${LAREIRA_CONTACT_FROM:-}
-      CONTACT_TO: lareirasoftwarecdm@gmail.com
+      CONTACT_TO: info@lareirasoftware.com
       SMTP_HOST: ${LAREIRA_SMTP_HOST:-}
       SMTP_PORT: ${LAREIRA_SMTP_PORT:-587}
       SMTP_USER_FILE: /run/secrets/lareira_smtp_user
