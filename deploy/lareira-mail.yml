@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  brief:
+    secrets:
+      - source: lareira_smtp_user
+        target: lareira_smtp_user
+      - source: lareira_smtp_password
+        target: lareira_smtp_password
+secrets:
+  lareira_smtp_user:
+    external: true
+    name: ${LAREIRA_SMTP_USER_SECRET:?Set the versioned username secret name}
+  lareira_smtp_password:
+    external: true
+    name: ${LAREIRA_SMTP_PASSWORD_SECRET:?Set the versioned password secret name}
