@@ -11,8 +11,13 @@ for name in "$user_secret" "$pass_secret"; do
     exit 1
   fi
 done
-printf 'Usuario SMTP (p. ej. info@lareirasoftware.com): '
-IFS= read -r smtp_user
+smtp_user="${LAREIRA_SMTP_USER:-}"
+if [ -z "$smtp_user" ]; then
+  printf 'Usuario SMTP (p. ej. info@lareirasoftware.com): '
+  IFS= read -r smtp_user
+else
+  echo "Usuario SMTP: $smtp_user"
+fi
 printf 'Contraseña de aplicación de Zoho (no se verá al escribir): '
 IFS= read -rs smtp_pass
 printf '\n'
