@@ -16,7 +16,7 @@ Owners of small local businesses on the Costa da Morte (Cee, Corcubión, Fisterr
 
 ## Product Purpose
 
-Lareira Software & Design builds simple websites at a closed price for small businesses, plus Google Business Profile tidy-up and social media management. This site exists to get one action: asking for the free mockup (boceto gratis) on WhatsApp. Success = WhatsApp conversations started.
+Lareira Software & Design builds simple websites at a closed price for small businesses, plus a Google Business Profile review. This site exists to get one action: asking for the free mockup (boceto gratis) on WhatsApp. Success = WhatsApp conversations started.
 
 ## Positioning
 
@@ -34,9 +34,9 @@ Offer (exact, do not invent others):
 - Both: legal notice and cookies. Single offer; no "launch price" wording.
 - Extra small changes after delivery: from 55 € VAT included per grouped intervention; quote first, paid in full in advance.
 - Renewal from the second year: 150 €/year VAT included (domain+hosting renewal, site kept running, one small update). Support: Mon–Fri except holidays; first reply within two working days.
-- Social media 350 €/month, no lock-in (kept as it was; to confirm).
+- Social media management is not offered for now (decision to revisit later).
 - Add-ons: third language 120 €; availability calendar (Google Calendar or Booking/Airbnb iCal) 100 €; tool connection 50 €; selling a few products from 350 €; blog 750–850 €; online bookings and appointments from 850 €; full online shop from 1.900 €. Anything beyond the offer gets a closed quote before starting.
-- Payment 50 % on start, 50 % on delivery (kept from the previous site; to confirm). All prices VAT included. Domain always in the client's name.
+- Payment 50 % on start, 50 % on delivery (confirmed). All prices VAT included. Domain always in the client's name.
 - Structured data priceRange "490 € – 840 €". Local SEO: one block per town with its own text; `ProfessionalService` with `areaServed` and `makesOffer`; `FAQPage`.
 - Contact: WhatsApp +34 619 38 90 56, Instagram @lareirasoftwarecdm (may change to @lareira.web). No public physical address.
 - Structure must allow adding zones (A Coruña, Galicia, Tenerife) later.
