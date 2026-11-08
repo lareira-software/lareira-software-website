@@ -8,11 +8,17 @@ html=html.replace('<link rel="stylesheet" href="style.css">','<style>'+css+'</st
 for name in ['model.js','app.js']:
  script=(example/name).read_text()
  if '</script' in script.lower():raise ValueError('Embedded script terminator must be escaped')
- html=html.replace('<script src="'+name+'" defer></script>','<script defer>'+script+'</script>')
+ if name=='app.js':
+  html=html.replace('<script src="'+name+'" defer></script>','<script>globalThis.LAREIRA_REVIEW=true;</script><script defer>'+script+'</script>')
+ else:
+  html=html.replace('<script src="'+name+'" defer></script>','<script defer>'+script+'</script>')
 # Inline classic scripts must wait until the body exists (defer applies only to external scripts).
 start=html.index('<script defer>');end=html.rindex('</script>')+len('</script>');scripts=html[start:end];html=html[:start]+html[end:];html=html.replace('</body>',scripts+'</body>')
 notice=(example/'fonts/OFL-archivo.txt').read_text()
 html=html.replace('</head>','<!-- Archivo font: see embedded SIL Open Font License notice below. -->\n</head>')
 html+='\n<!-- Font license (SIL OFL):\n'+notice.replace('--','—')+'\n-->\n'
-html=html.replace("</body>","<script>\ndocument.querySelector('.review-note').textContent='Modo revisión: WhatsApp bloqueado. Usa datos inventados.';\ndocument.querySelector('#whatsapp').addEventListener('click',function(event){event.preventDefault();event.stopImmediatePropagation();document.querySelector('#copy-status').textContent='Modo revisión: no se abre WhatsApp. Puedes copiar el resumen para revisarlo.';},true);\n</script>"+"</body>")
+note_start=html.index('<p class="review-note">')+len('<p class="review-note">')
+note_end=html.index('</p>',note_start)
+html=html[:note_start]+'Modo revisión: envío desactivado. Usa datos inventados.'+html[note_end:]
+
 out=root/'.git/quiz-review/revision-portatil.html';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(html);print(out);print('BYTES',out.stat().st_size)

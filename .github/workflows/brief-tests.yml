@@ -1,0 +1,24 @@
+name: Pruebas del cuestionario
+on:
+  pull_request:
+    branches: [main]
+    paths: ['brief/**', 'backend/**', '.github/workflows/brief-tests.yml']
+  push:
+    branches: [main]
+    paths: ['brief/**', 'backend/**', '.github/workflows/brief-tests.yml']
+permissions:
+  contents: read
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts
+        working-directory: backend
+      - run: npm test
+        working-directory: backend
+      - run: node --test brief/tests/*.test.mjs
