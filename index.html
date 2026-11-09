@@ -177,6 +177,20 @@ a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
 
 /* ===== Portada ===== */
 
+/* Cabecera y portada comparten un único fondo: la cabecera es transparente y la portada pasa por debajo de ella. */
+:root{--alto-cab:6rem}
+@media (max-width:899px){:root{--alto-cab:5.825rem}}
+.cabecera.sobre-azul{position:absolute;top:0;left:0;right:0;background:transparent}
+.portada.sobre-azul{position:relative;isolation:isolate;padding-top:var(--alto-cab)}
+.portada__fondo{position:absolute;inset:0;z-index:-2;pointer-events:none;overflow:hidden;background:var(--mar)}
+.portada__fondo img{width:100%;height:100%;object-fit:cover;object-position:50% 48%;mix-blend-mode:luminosity}
+.portada::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,rgba(14,44,147,0.62) 0,rgba(14,44,147,0.58) 6rem,rgba(14,44,147,0.52) 12rem,rgba(14,44,147,0.42) 17rem,rgba(14,44,147,0.22) 24rem,rgba(14,44,147,0.07) 31rem,rgba(14,44,147,0) 38rem),linear-gradient(90deg,rgba(14,44,147,0.9) 0,rgba(14,44,147,0.88) 30%,rgba(14,44,147,0.83) 44%,rgba(14,44,147,0.74) 54%,rgba(14,44,147,0.64) 62%,rgba(14,44,147,0.54) 70%,rgba(14,44,147,0.47) 80%,rgba(14,44,147,0.44) 100%)}
+.portada .movil{box-shadow:0 0 0 1px rgba(255,255,255,.22),0 30px 60px -20px rgba(0,0,0,.5),0 12px 24px -12px rgba(0,0,0,.35)}
+@media (max-width:899px){
+  .portada__fondo img{object-position:54% 42%}
+  .portada::before{background:linear-gradient(180deg,rgba(14,44,147,0.78) 0,rgba(14,44,147,0.8) 8rem,rgba(14,44,147,0.82) 34rem,rgba(14,44,147,0.6) 100%)}
+}
+
 .portada__rejilla{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--e-6);align-items:center;padding-top:var(--e-3)}
 .portada h1{font-size:clamp(2.5rem,1.5rem + 3.4vw,4.25rem);max-width:15ch}
 .portada__sub{margin-top:var(--e-3);font-size:1.1875rem;color:var(--sobre-mar);max-width:44ch}
@@ -199,7 +213,7 @@ a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
 .muestra__ayuda{margin-top:.45rem;font-size:.875rem;line-height:1.5;color:var(--sobre-mar)}
 
 .movil{position:relative;width:min(100%,18.5rem);aspect-ratio:9/17.4;padding:.6rem;border-radius:var(--r-movil);background:var(--tinta);
-  box-shadow:0 30px 60px -20px rgba(6,14,48,.55),0 12px 24px -12px rgba(6,14,48,.4)}
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.5),0 12px 24px -12px rgba(0,0,0,.35)}
 .pantalla{position:relative;height:100%;overflow:hidden;border-radius:calc(var(--r-movil) - .6rem);background:#FBF7F0;color:#2A1D12;font-size:.8125rem;line-height:1.45}
 .ej-tag{position:absolute;top:.8rem;right:.7rem;z-index:2;white-space:nowrap;padding:.2rem .5rem;border-radius:4px;background:var(--tinta);color:var(--papel);font-size:.6875rem;font-weight:650;line-height:1.3}
 .ej-barra{display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding:.85rem 1rem .5rem;font-weight:700}
@@ -462,6 +476,10 @@ a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
 
   <main id="contenido">
   <section class="portada sobre-azul" id="inicio" aria-labelledby="t-inicio">
+    <picture class="portada__fondo" aria-hidden="true">
+      <source media="(min-width:900px)" srcset="img/costa-portada-escritorio.webp">
+      <img src="img/costa-portada-960.webp" alt="" width="960" height="1440" fetchpriority="high" decoding="async">
+    </picture>
     <div class="wrap portada__rejilla">
       <div>
         <h1 id="t-inicio" class="entra">Páginas web para negocios de la Costa da Morte</h1>

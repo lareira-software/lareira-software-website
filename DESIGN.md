@@ -123,3 +123,12 @@ La tablilla sirve igual para la carta de un bar, las tarifas de una peluquería 
 - Web de ejemplo (fuera del sistema, cambia por cliente): fondo `#FBF7F0`, texto `#2A1D12`, foto `img/o-forno.jpg` arriba y el nombre debajo en texto (nunca encima de la foto), etiqueta «Web de ejemplo» junto al nombre.
 - Fotos actuales generadas con IA en Canva: `img/o-forno.jpg` (negocio inventado) y `img/escritorio-web.jpg` (hueco de «Quién hace tu web»). Sustituirlas por fotos reales cuando las haya, mismas proporciones (4:3 y 4:5).
 - Para añadir una zona: copiar un `<li>` de `.pueblos`, cambiar id, nombre y texto, y añadirla a `areaServed` en el JSON-LD.
+
+
+## 10. Prueba local · fotografía de portada (pendiente de aprobación)
+
+- Alcance: sustituir el fondo azul de la portada por la fotografía costera aportada por Moli. No cambia la rejilla, la tipografía, los textos, la oferta ni las interacciones. El resto de los campos azules se conserva.
+- Origen: adjunto `img_0bad5e2aa5b2.jpeg` (4000 × 6000). Ubicación y derechos no verificados; no se presenta como un lugar concreto.
+- Derivados: `img/costa-portada-960.webp` (vertical, móvil y tablet) y `img/costa-portada-escritorio.webp` (recorte horizontal 2200 × 1257 para pantallas desde 900 px). Imagen decorativa, carga prioritaria.
+- Dirección: recorte horizontal propio en escritorio (50 % 48 %, del 12 % al 50 % de la altura de la foto) y encuadre 54 % 42 % en móvil. Un único fondo para cabecera y portada: la cabecera es transparente (la portada pasa por debajo, `--alto-cab`) y no hay franja ni costura entre ambas. La foto actúa como duotono de marca (`mix-blend-mode:luminosity` sobre `--mar`, de modo que aporta solo luminosidad y el tono es siempre el azul Lareira) con un único velo de `--profundo` de transparencia suave: más cerrado a la izquierda y arriba, donde hay texto, y abierto hacia la derecha y abajo. Degradados con varias paradas, sin escalones. Los CTAs siguen en blanco y llevan al cuestionario.
+- Estado: solo desarrollo local, rama `cambio/foto-costa-portada`. No fusionar ni publicar sin aprobación expresa de Moli.
