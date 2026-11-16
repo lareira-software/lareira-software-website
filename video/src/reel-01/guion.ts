@@ -26,6 +26,14 @@ export const TEXTOS = {
   cierrePie: 'Comenta *LAREIRA*',
 };
 
+// Escena 4: tomas reales, una detrás de otra (en assets/). `desde` = segundo del vídeo original
+// donde empieza el corte; `dura` = cuánto se ve. Si falta enchufe o cerrar, manos ocupa su tiempo.
+export const TOMAS_MANOS = [
+  {archivo: 'enchufe.mp4', desde: 1.2, dura: 1.3}, // se enchufa el portátil
+  {archivo: 'manos.mp4', desde: 10.0, dura: 2.6}, // manos tecleando con una web en pantalla
+  {archivo: 'cerrar.mp4', desde: 1.2, dura: 1.1}, // se cierra la tapa → corte al cierre
+];
+
 export const CAPAS = [
   'Que cargue rápido en cualquier móvil',
   'Que el formulario llegue de verdad',
