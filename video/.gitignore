@@ -1,0 +1,9 @@
+node_modules/
+# Vídeos y audios pesados: no se suben al repo
+out/*.mp4
+out/*.png
+out/capturas/
+assets/*.mp4
+assets/*.mov
+assets/*.mp3
+assets/*.wav

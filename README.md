@@ -9,6 +9,10 @@ Para cambios, crea una rama, abre un pull request contra `main` y haz merge: al 
 
 En cada push y pull request se pasa además la revisión de diseño de Impeccable (`npx impeccable detect index.html`). No bloquea la publicación, pero si sale en rojo, revísalo.
 
+## Vídeos
+
+Los reels de Instagram se hacen con código en `video/` (Remotion). No se publican en la web. Ver `video/README.md`.
+
 ## Documentos
 
 - `PRODUCT.md`: qué es Lareira, oferta y reglas de marca.
