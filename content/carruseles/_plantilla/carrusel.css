@@ -70,17 +70,18 @@ body{font-family:var(--f);color:var(--tinta);-webkit-font-smoothing:antialiased;
 .cierre{top:280px}
 .cierre .titular{font-size:104px}
 .cierre .bajada{margin-top:56px;font-size:60px}
-.cierre .pegatina{width:248px;height:248px;font-size:54px;right:0;bottom:-300px}
+.cierre .pegatina{width:248px;height:248px;font-size:54px;right:0;bottom:-270px}
 
 /* ===== Fila de tablilla (slides interiores) =====
    La fila arranca siempre a la misma altura para que los números caigan en el mismo sitio en todas.
    La columna del texto (unos 644 px) admite una palabra larga más su artículo en una línea,
    para evitar viudas tipo «ni sobredimensionado.». */
-.fila{position:absolute;left:88px;right:88px;top:450px;
+.fila{position:absolute;left:88px;right:88px;top:450px;min-height:372px;
+  /* alto mínimo: la raya cae a la misma altura con titulares de 2 o 3 líneas */
   display:grid;grid-template-columns:minmax(0,1fr) 220px;column-gap:40px;align-items:start;
   padding-bottom:56px;border-bottom:1px solid var(--linea)}
 .fila .titular{font-size:76px;grid-column:1;grid-row:1}
-.fila .etiqueta{font-size:36px;margin-top:40px;grid-column:1 / -1;grid-row:2}
+.fila .etiqueta{font-size:40px;margin-top:40px;grid-column:1 / -1;grid-row:2}
 .fila .numero{grid-column:2;grid-row:1;justify-self:end;
   font-weight:800;font-stretch:66%;font-variant-numeric:tabular-nums lining-nums;
   font-size:256px;line-height:.74;letter-spacing:-.02em;color:var(--mar);
