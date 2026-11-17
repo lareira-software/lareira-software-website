@@ -4,9 +4,9 @@ import {color, fuente, tam} from './tokens';
 import {ZONA} from './zonaSegura';
 
 /** «lareira.» en minúscula con el punto naranja, abajo a la izquierda dentro de la zona segura. */
-export const Logo: React.FC<{fundido?: number}> = ({fundido = 12}) => {
+export const Logo: React.FC<{fundido?: number; colorTexto?: string}> = ({fundido = 12, colorTexto = color.espuma}) => {
   const frame = useCurrentFrame();
-  const o = interpolate(frame, [0, fundido], [0, 1], {extrapolateRight: 'clamp'});
+  const o = fundido > 0 ? interpolate(frame, [0, fundido], [0, 1], {extrapolateRight: 'clamp'}) : 1;
   return (
     <div
       style={{
@@ -16,9 +16,9 @@ export const Logo: React.FC<{fundido?: number}> = ({fundido = 12}) => {
         fontFamily: fuente.familia,
         ...fuente.titular,
         fontSize: tam.logo,
-        color: color.espuma,
+        color: colorTexto,
         opacity: o,
-        textShadow: '0 1px 12px rgba(0,0,0,.25)',
+        textShadow: colorTexto === color.espuma ? '0 1px 12px rgba(0,0,0,.25)' : undefined,
       }}
     >
       lareira<span style={{color: color.lume}}>.</span>

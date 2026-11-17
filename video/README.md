@@ -18,14 +18,15 @@ Para renderizar se usa el Google Chrome del Mac (ver `remotion.config.ts`): el C
 ## Estructura
 
 - `src/comun/`: piezas para todos los reels
-  - `tokens.ts`: colores (gris piedra, verde mar, naranja de acento), tipografía Archivo y espacios, sacados de `DESIGN.md`
+  - `tokens.ts`: colores (granito claro de fondo, verde mar, naranja de acento), tipografía Archivo y espacios, sacados de `DESIGN.md`
   - `zonaSegura.tsx`: zona segura de Instagram (250 px arriba, 380 abajo, 60 a los lados) y una guía para verla en el Studio (prop `verZonaSegura`)
-  - `TextoPalabras.tsx`: texto que entra palabra a palabra; las palabras entre `*asteriscos*` salen en naranja
+  - `TextoPalabras.tsx`: texto que entra palabra a palabra con revelado de máscara; las palabras entre `*asteriscos*` llevan pegatina naranja
+  - `Grano.tsx`: grano fino sobre todo el vídeo
   - `TextoCentrado.tsx`, `Logo.tsx`, `Subtitulos.tsx`, `BandaSonora.tsx` (voz y música con bajada), `Movil.tsx`, `Fondo.tsx`, `assets.ts`
 - `src/reel-01/`: el reel 1, «El iceberg»
   - `guion.ts`: **todos los tiempos y textos**. Para ajustar el reel a la voz grabada, cambia solo este archivo
   - `escenas/`: un componente por escena
-  - `FondoForno.tsx`: el horno de leña de O Forno dibujado en SVG (fondo del gancho, del último frame y foto del móvil)
+  - `FotoTarjeta.tsx`: la foto de la lareira (gancho, cierre y foto del móvil). Si falta `assets/lareira.jpg`, usa el horno dibujado de `FondoForno.tsx`
   - `Portada.tsx`: la portada en PNG
 - `assets/`: vídeos y audios (ver `assets/LEEME.md`). No se suben a GitHub
 - `out/`: lo que se genera. En GitHub solo se guardan el guion y el `.srt`

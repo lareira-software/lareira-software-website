@@ -56,13 +56,16 @@ export const Iceberg: React.FC = () => {
 
   // B · la cámara baja (paneo vertical suave)
   const bajada = entrada(frame, fps, Math.round(ICEBERG.bajadaDesde * fps), SUAVE, Math.round(ICEBERG.bajadaDura * fps));
-  const camara = interpolate(bajada, [0, 1], [0, BAJADA]);
+  // …y ya bajo el agua sigue descendiendo muy despacio, para que la escena no se quede quieta
+  const finBajada = Math.round((ICEBERG.bajadaDesde + ICEBERG.bajadaDura) * fps);
+  const deriva = interpolate(frame, [finBajada, 11 * fps], [0, 46], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const camara = interpolate(bajada, [0, 1], [0, BAJADA]) + deriva;
 
   // D · 90 %
   const v90 = entrada(frame, fps, Math.round(ICEBERG.noventaDesde * fps));
 
   return (
-    <AbsoluteFill style={{backgroundColor: color.piedra, overflow: 'hidden'}}>
+    <AbsoluteFill style={{backgroundColor: color.granito, overflow: 'hidden'}}>
       {fondoVideo ? (
         <AbsoluteFill style={{opacity: vAgua}}>
           <OffthreadVideo src={fondoVideo} muted style={{width: '100%', height: '100%', objectFit: 'cover'}} />
@@ -81,12 +84,16 @@ export const Iceberg: React.FC = () => {
       </div>
 
       {/* C · capas, una a una, como filas de tablilla */}
-      <div style={{position: 'absolute', left: 110, top: ZONA_RECT.y + 20, width: 860}}>
+      <div style={{position: 'absolute', left: 110, top: ZONA_RECT.y + 60, width: 860, transform: `translateY(${-deriva}px)`}}>
         {CAPAS.map((texto, i) => {
           const v = entrada(frame, fps, Math.round((ICEBERG.capasDesde + i * ICEBERG.cadenciaCapas) * fps));
           return (
-            <div key={texto} style={{position: 'relative', padding: '17px 0 15px', opacity: Math.min(1, v * 1.3), transform: `translateY(${(1 - v) * 18}px)`}}>
-              <div style={{fontFamily: fuente.familia, ...fuente.texto, fontStretch: '78%', fontSize: tam.capa, color: color.espuma}}>{texto}</div>
+            <div key={texto} style={{position: 'relative', padding: '17px 0 15px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
+              {/* revelado de máscara, como el resto de textos */}
+              <div style={{overflow: 'hidden', paddingBottom: 6, marginBottom: -6}}>
+                <div style={{fontFamily: fuente.familia, ...fuente.texto, fontStretch: '78%', fontSize: tam.capa, color: color.espuma, transform: `translateY(${(1 - v) * 115}%)`}}>{texto}</div>
+              </div>
+              <div style={{fontFamily: fuente.familia, ...fuente.numero, fontSize: 30, color: color.lineaAgua, opacity: v * 0.8}}>{String(i + 1).padStart(2, '0')}</div>
               <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 1.5, background: color.hieloBorde, opacity: 0.55, transformOrigin: '0 50%', transform: `scaleX(${v})`}} />
             </div>
           );
@@ -97,13 +104,14 @@ export const Iceberg: React.FC = () => {
         style={{
           position: 'absolute',
           right: 130,
-          top: 1090,
+          top: 1120,
           fontFamily: fuente.familia,
           ...fuente.numero,
           fontSize: tam.enorme,
           color: color.lume,
-          opacity: v90,
-          transform: `translateY(${(1 - v90) * 30}px)`,
+          opacity: Math.min(1, v90 * 1.6),
+          transform: `translateY(${(1 - v90) * 40 - deriva}px) scale(${interpolate(v90, [0, 1], [0.9, 1])})`,
+          transformOrigin: '100% 100%',
         }}
       >
         90%

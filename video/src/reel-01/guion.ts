@@ -15,10 +15,12 @@ export const ESCENAS = {
 };
 
 export const LOGO_DESDE = 3;
+export const LOGO_CLARO_DESDE = 7.7; // el logo pasa a blanco cuando ya hay agua debajo
 
-// Horno de O Forno detrás del gancho (en frames). Se ve desde el frame 0 y se funde con la escena 2
-// mientras entra el móvil. Para el bucle, el cierre lo vuelve a fundir detrás de su texto al final.
-export const FORNO = {saleDesde: 76, saleHasta: 100, vuelveEnCierre: 12};
+// Tarjeta con la foto de la lareira en el gancho y el cierre (px). En la escena 2 vuela a la pantalla del móvil.
+export const TARJETA = {x: 60, y: 820, ancho: 960, alto: 603};
+// Bloque de texto del gancho y del cierre (mismo sitio para que el bucle encaje)
+export const BLOQUE_TEXTO = {x: 84, y: 300, ancho: 912};
 
 export const TEXTOS = {
   gancho: ['ChatGPT te hace una web en 5 minutos.', 'Esto es lo que *NO* te hace.'],

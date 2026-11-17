@@ -1,26 +1,35 @@
 import React from 'react';
-import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
-import {salida} from '../../comun/movimiento';
+import {AbsoluteFill, Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import {noise2D} from '@remotion/noise';
 import {TextoPalabras} from '../../comun/TextoPalabras';
-import {TextoCentrado} from '../../comun/TextoCentrado';
-import {tam} from '../../comun/tokens';
-import {TEXTOS} from '../guion';
+import {color, tam} from '../../comun/tokens';
+import {BLOQUE_TEXTO, TARJETA, TEXTOS} from '../guion';
+import {FotoTarjeta} from '../FotoTarjeta';
 
-// 1 · GANCHO. Solo el texto: el horno de O Forno (FondoForno) va debajo, montado en Reel01.
-// El primer golpe ya está a la vista en el frame 0 (para el bucle y para la vista previa del feed).
+/** Zoom lento hacia el fuego durante el gancho (1 → 1,12). La escena 2 lo continúa. */
+export const zoomGancho = (frame: number) => interpolate(frame, [0, 90], [1, 1.12], {easing: Easing.inOut(Easing.sin), extrapolateRight: 'clamp'});
+/** Luz de lumbre: la foto respira un poco, sin ritmo fijo. */
+export const luzLumbre = (t: number) => 1 + Math.sin((t / 1.5) * Math.PI * 2) * 0.03 + noise2D('lumbre', t * 2.2, 0) * 0.04;
+
+// 1 · GANCHO. Fondo de granito claro, el texto arriba y la foto de la lareira nítida debajo.
+// El frame 0 ya está completo (para el bucle y para la vista previa del feed).
 export const Gancho: React.FC = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const segundo = Math.round(TEXTOS.ganchoSegundoGolpe * fps);
   return (
-    <AbsoluteFill style={{opacity: salida(frame, 80, 8)}}>
-      <TextoCentrado>
-        {frame < segundo ? (
-          <TextoPalabras texto={TEXTOS.gancho[0]} inmediato tamano={tam.gancho} />
-        ) : (
-          <TextoPalabras texto={TEXTOS.gancho[1]} desde={segundo} cadencia={3} tamano={tam.gancho} />
-        )}
-      </TextoCentrado>
+    <AbsoluteFill style={{backgroundColor: color.granito}}>
+      <div style={{position: 'absolute', left: BLOQUE_TEXTO.x, top: BLOQUE_TEXTO.y, width: BLOQUE_TEXTO.ancho}}>
+        {frame < segundo + 4 ? (
+          <TextoPalabras texto={TEXTOS.gancho[0]} inmediato sale={segundo - 6} tamano={tam.gancho} colorTexto={color.tinta} />
+        ) : null}
+        {frame >= segundo ? (
+          <div style={{position: 'absolute', inset: 0}}>
+            <TextoPalabras texto={TEXTOS.gancho[1]} desde={segundo} cadencia={3} sale={80} tamano={tam.gancho} colorTexto={color.tinta} />
+          </div>
+        ) : null}
+      </div>
+      <FotoTarjeta rect={TARJETA} zoom={zoomGancho(frame)} luz={luzLumbre(frame / fps)} />
     </AbsoluteFill>
   );
 };

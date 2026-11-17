@@ -1,32 +1,36 @@
 import React from 'react';
-import {AbsoluteFill, Freeze, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
-import {FondoGancho} from '../FondoGancho';
-import {FondoPiedra} from '../../comun/Fondo';
-import {TextoCentrado} from '../../comun/TextoCentrado';
+import {AbsoluteFill, Easing, Freeze, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {TextoPalabras} from '../../comun/TextoPalabras';
-import {e, tam} from '../../comun/tokens';
-import {ESCENAS, FORNO, TEXTOS} from '../guion';
+import {color, e, tam} from '../../comun/tokens';
+import {BLOQUE_TEXTO, ESCENAS, TARJETA, TEXTOS} from '../guion';
+import {FotoTarjeta} from '../FotoTarjeta';
+import {Gancho, luzLumbre} from './Gancho';
 
-// 5 · CIERRE EN BUCLE: mismo tamaño y centro que el gancho, y el horno de fondo en el último frame.
+const BUCLE = 10; // últimos frames: se funde con el frame 0 del gancho
+
+// 5 · CIERRE EN BUCLE: mismo fondo, mismo bloque de texto y misma foto que el gancho.
 export const Cierre: React.FC = () => {
   const {fps} = useVideoConfig();
   const frame = useCurrentFrame();
   const total = (ESCENAS.cierre.hasta - ESCENAS.cierre.desde) * fps;
-  // Al final vuelve el horno (congelado en su frame 0): el último frame encaja con el primero
-  const horno = interpolate(frame, [total - FORNO.vuelveEnCierre, total - 1], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  // La foto sube desvelándose desde abajo y se aleja hasta quedar como en el frame 0
+  const desvela = interpolate(frame, [14, 34], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)});
+  const zoom = interpolate(frame, [14, total], [1.1, 1], {extrapolateLeft: 'clamp', easing: Easing.out(Easing.quad)});
+  const bucle = interpolate(frame, [total - BUCLE, total - 1], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
-    <FondoPiedra>
-      {horno > 0 ? (
-        <AbsoluteFill style={{opacity: horno}}>
+    <AbsoluteFill style={{backgroundColor: color.granito}}>
+      <div style={{position: 'absolute', left: BLOQUE_TEXTO.x, top: BLOQUE_TEXTO.y, width: BLOQUE_TEXTO.ancho}}>
+        <TextoPalabras texto={TEXTOS.cierre} desde={2} tamano={tam.gancho} colorTexto={color.tinta} />
+        <TextoPalabras texto={TEXTOS.cierrePie} desde={Math.round(0.75 * fps)} tamano={tam.titular - 8} colorTexto={color.tinta} estilo={{marginTop: e[4]}} />
+      </div>
+      <FotoTarjeta rect={TARJETA} zoom={zoom} recorte={desvela} luz={luzLumbre(frame / fps)} />
+      {bucle > 0 ? (
+        <AbsoluteFill style={{opacity: bucle}}>
           <Freeze frame={0}>
-            <FondoGancho paraTexto />
+            <Gancho />
           </Freeze>
         </AbsoluteFill>
       ) : null}
-      <TextoCentrado>
-        <TextoPalabras texto={TEXTOS.cierre} desde={3} tamano={tam.gancho} />
-        <TextoPalabras texto={TEXTOS.cierrePie} desde={Math.round(0.9 * fps)} tamano={tam.titular - 20} estilo={{marginTop: e[5]}} />
-      </TextoCentrado>
-    </FondoPiedra>
+    </AbsoluteFill>
   );
 };

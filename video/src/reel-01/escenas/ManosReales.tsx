@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, OffthreadVideo, Sequence, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, interpolate, OffthreadVideo, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
 import {asset} from '../../comun/assets';
 import {Sustituto} from '../../comun/Fondo';
 import {TextoPalabras} from '../../comun/TextoPalabras';
@@ -13,6 +13,13 @@ const tomasDisponibles = () => {
   if (!hay.some((t) => t.archivo === 'manos.mp4')) return [];
   const sobra = TOMAS_MANOS.filter((t) => !asset(t.archivo)).reduce((a, t) => a + t.dura, 0);
   return hay.map((t) => (t.archivo === 'manos.mp4' ? {...t, dura: t.dura + sobra} : t));
+};
+
+/** Cada toma entra con un ligero zoom que se asienta: da ritmo a los cortes sin efectos. */
+const Toma: React.FC<{src: string; desde: number}> = ({src, desde}) => {
+  const frame = useCurrentFrame();
+  const z = interpolate(frame, [0, 14], [1.07, 1], {extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)});
+  return <OffthreadVideo src={src} startFrom={desde} muted style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${z})`}} />;
 };
 
 // Sombra suave para leer sobre la toma real
@@ -32,7 +39,7 @@ export const ManosReales: React.FC = () => {
         inicio += t.dura;
         return (
           <Sequence key={t.archivo} from={from} durationInFrames={dur} name={t.archivo}>
-            <OffthreadVideo src={asset(t.archivo)!} startFrom={Math.round(t.desde * fps)} muted style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            <Toma src={asset(t.archivo)!} desde={Math.round(t.desde * fps)} />
           </Sequence>
         );
       })}

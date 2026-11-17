@@ -5,6 +5,13 @@ import {fuente} from './tokens';
 // Móvil dibujado en CSS: marco simple sin marca, radio 30px escalado (DESIGN.md «Móvil de ejemplo»).
 export const MOVIL = {ancho: 420, alto: 860} as const;
 
+/** Rectángulo de la foto dentro de la pantalla del móvil, en px del vídeo (para encadenar transiciones). */
+export const huecoFoto = (bx: number, by: number, escala = 1) => {
+  const x = bx - MOVIL.ancho / 2 + 14;
+  const y = by - MOVIL.alto + 14 + 46 + 64;
+  return {x: bx + (x - bx) * escala, y: by + (y - by) * escala, ancho: 392 * escala, alto: 330 * escala};
+};
+
 export type WebEjemplo = {nombre: string; lugar: string; foto: string; texto: string; boton: string};
 
 /** Posición por el centro de la base del móvil (bx, by) y escala con origen en la base. */
@@ -36,7 +43,7 @@ export const Movil: React.FC<{web: WebEjemplo; bx: number; by: number; escala?: 
           <span style={{letterSpacing: 2}}>●●●</span>
         </div>
         {/* cabecera */}
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 26px 16px'}}>
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 26px', height: 64, boxSizing: 'border-box'}}>
           <span style={{fontWeight: 750, fontStretch: '72%', fontSize: 30, letterSpacing: '-0.02em'}}>{web.nombre}</span>
           <span style={{display: 'flex', flexDirection: 'column', gap: 6}}>
             <span style={{width: 28, height: 2.5, background: c.texto}} />

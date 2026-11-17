@@ -6,9 +6,12 @@
 export const VIDEO = {ancho: 1080, alto: 1920, fps: 30} as const;
 
 export const color = {
-  piedra: '#2F3331', // fondo: granito oscuro
+  granito: '#E4E6E1', // fondo claro: granito gris claro (frío, nunca crema)
+  granitoLinea: '#C3C8C1', // rayas sobre granito claro
+  tinta2: '#4A5170', // texto secundario sobre granito claro (6,5:1)
+  piedra: '#2F3331', // granito oscuro
   piedraLinea: '#4A504D', // rayas sobre piedra
-  mar: '#0B3634', // verde mar atlántico (agua cerca de la superficie)
+  mar: '#17655F', // verde mar atlántico (agua cerca de la superficie)
   abismo: '#051715', // agua profunda
   hielo: '#154A46', // cuerpo del iceberg bajo el agua (naranja 3,2:1 en 220px; blanco 9:1)
   hieloBorde: '#6FA39B', // contorno del iceberg y rayas de tablilla bajo el agua
