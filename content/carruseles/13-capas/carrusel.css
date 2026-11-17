@@ -1,0 +1,89 @@
+/* Carruseles de Instagram · Lareira · sistema «Tablilla» v1.0 (DESIGN.md)
+   Slide de 1080 × 1350 px. Márgenes laterales de 88 px y 120 px libres arriba y abajo.
+   Tipos de slide: .portada (azul --mar), .fila (tablilla sobre --papel o --neboa), .cierre (--profundo). */
+
+@font-face{
+  font-family:"Archivo";
+  src:url("../../../fonts/archivo-var.woff2") format("woff2-variations"),
+      url("../../../fonts/archivo-var.woff2") format("woff2");
+  font-weight:100 900;
+  font-stretch:62% 125%;
+  font-display:block;
+}
+
+:root{
+  --mar:#1748E0;
+  --profundo:#0E2C93;
+  --lume:#FF5A1F;
+  --tinta:#0D1330;
+  --tinta-2:#4A5170;
+  --papel:#FFFFFF;
+  --neboa:#EEF2FB;
+  --linea:#D5DBEA;
+  --sobre-mar:#D3DDFF;
+  --linea-mar:#5B7BEA;
+  --f:"Archivo",system-ui,sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;background:var(--papel)}
+body{font-family:var(--f);color:var(--tinta);-webkit-font-smoothing:antialiased;font-synthesis:none}
+
+/* ===== Lienzo ===== */
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--papel);color:var(--tinta)}
+.slide--neboa{background:var(--neboa)}
+.slide--mar{background:var(--mar);color:var(--papel)}
+.slide--profundo{background:var(--profundo);color:var(--papel)}
+
+/* Barra de progreso: 4 px, dentro de la zona libre de arriba.
+   El tramo completado se fija en cada slide con style="--avance:30%" (slide 3 de 10). */
+.progreso{position:absolute;top:56px;left:88px;right:88px;height:4px;background:var(--linea)}
+.progreso::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--avance,10%);background:var(--mar)}
+.slide--mar .progreso,.slide--profundo .progreso{background:var(--linea-mar)}
+.slide--mar .progreso::after,.slide--profundo .progreso::after{background:var(--papel)}
+
+/* Logo: siempre en el mismo sitio, abajo a la izquierda, dentro de la zona libre de abajo */
+.logo{position:absolute;left:88px;bottom:52px;font-weight:750;font-stretch:72%;font-size:44px;
+  letter-spacing:-.03em;line-height:1;color:var(--tinta)}
+.logo b{color:var(--lume);font-weight:800}
+.slide--mar .logo,.slide--profundo .logo{color:var(--papel)}
+
+/* ===== Tipografía ===== */
+.titular{font-weight:750;font-stretch:72%;letter-spacing:-.02em;line-height:1;text-wrap:balance}
+.bajada{font-weight:750;font-stretch:72%;letter-spacing:-.02em;line-height:1.05;text-wrap:balance;color:var(--sobre-mar)}
+.etiqueta{font-weight:600;font-stretch:100%;line-height:1.3;color:var(--tinta-2)}
+
+/* ===== Pegatina (una por slide como mucho) ===== */
+.pegatina{position:absolute;display:grid;place-items:center;border-radius:50%;
+  background:var(--lume);color:var(--tinta);font-weight:700;font-stretch:72%;letter-spacing:-.01em;
+  line-height:1;text-align:center}
+
+/* ===== Portada (azul --mar) y cierre (--profundo) =====
+   El bloque de texto empieza a una altura fija y crece hacia abajo. */
+.portada,.cierre{position:absolute;left:88px;right:88px}
+.portada{top:330px}
+.portada .titular{font-size:156px}
+.portada .bajada{margin-top:56px;font-size:72px}
+.portada .pegatina{width:272px;height:272px;font-size:100px;font-weight:700;font-stretch:66%;
+  font-variant-numeric:tabular-nums;right:0;bottom:-96px}
+
+.cierre{top:280px}
+.cierre .titular{font-size:104px}
+.cierre .bajada{margin-top:56px;font-size:60px}
+.cierre .pegatina{width:248px;height:248px;font-size:54px;right:0;bottom:-270px}
+
+/* ===== Fila de tablilla (slides interiores) =====
+   La fila arranca siempre a la misma altura para que los números caigan en el mismo sitio en todas.
+   La columna del texto (unos 644 px) admite una palabra larga más su artículo en una línea,
+   para evitar viudas tipo «ni sobredimensionado.». */
+.fila{position:absolute;left:88px;right:88px;top:450px;min-height:372px;
+  /* alto mínimo: la raya cae a la misma altura con titulares de 2 o 3 líneas */
+  display:grid;grid-template-columns:minmax(0,1fr) 220px;column-gap:40px;align-items:start;
+  padding-bottom:56px;border-bottom:1px solid var(--linea)}
+.fila .titular{font-size:76px;grid-column:1;grid-row:1}
+.fila .etiqueta{font-size:40px;margin-top:40px;grid-column:1 / -1;grid-row:2}
+.fila .numero{grid-column:2;grid-row:1;justify-self:end;
+  font-weight:800;font-stretch:66%;font-variant-numeric:tabular-nums lining-nums;
+  font-size:256px;line-height:.74;letter-spacing:-.02em;color:var(--mar);
+  /* compensa el hueco de la caja de línea para que la cifra arranque a ras del titular */
+  margin-top:6px}
