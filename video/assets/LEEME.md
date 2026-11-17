@@ -10,6 +10,8 @@ Pon aquí los archivos con estos nombres exactos. Todos son opcionales: si falta
 - `musica.mp3`: música de fondo (al 20 %, baja al 8 % mientras habla la voz).
 - `iceberg.mp4`: plano del iceberg de OpenArt para el fondo de la escena 3. Sin él se dibuja en SVG.
 
+`lareira.jpg`: foto de la lareira para el fondo del gancho, el último frame y el móvil (tenemos permiso para usarla). Sin ella sale el horno dibujado.
+
 `o-forno.jpg` no lo pongas tú: es la foto del horno dibujado, se genera con `npm run foto` y sí se sube a GitHub.
 
 Los vídeos y audios no se suben a GitHub (están en `.gitignore`).
