@@ -12,7 +12,7 @@ import {Iceberg} from './escenas/Iceberg';
 import {LoQueVes} from './escenas/LoQueVes';
 import {ManosReales} from './escenas/ManosReales';
 import {DURACION, ESCENAS, FORNO, FPS, LOGO_DESDE, VOZ, subtitulos} from './guion';
-import {FondoForno} from './FondoForno';
+import {FondoGancho} from './FondoGancho';
 
 export type PropsReel = {verZonaSegura: boolean};
 
@@ -23,7 +23,7 @@ const HornoGancho: React.FC = () => {
   const o = interpolate(frame, [FORNO.saleDesde, FORNO.saleHasta], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{opacity: o}}>
-      <FondoForno paraTexto />
+      <FondoGancho paraTexto />
     </AbsoluteFill>
   );
 };

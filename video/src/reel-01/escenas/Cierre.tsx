@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Freeze, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
-import {FondoForno} from '../FondoForno';
+import {FondoGancho} from '../FondoGancho';
 import {FondoPiedra} from '../../comun/Fondo';
 import {TextoCentrado} from '../../comun/TextoCentrado';
 import {TextoPalabras} from '../../comun/TextoPalabras';
@@ -19,7 +19,7 @@ export const Cierre: React.FC = () => {
       {horno > 0 ? (
         <AbsoluteFill style={{opacity: horno}}>
           <Freeze frame={0}>
-            <FondoForno paraTexto />
+            <FondoGancho paraTexto />
           </Freeze>
         </AbsoluteFill>
       ) : null}

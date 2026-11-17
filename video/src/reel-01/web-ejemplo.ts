@@ -3,8 +3,8 @@ import fotoAntigua from '../../../img/o-forno.jpg';
 import type {WebEjemplo} from '../comun/Movil';
 
 // Negocio inventado, el mismo que la web de ejemplo de lareirasoftware.com.
-// La foto es el horno del gancho (assets/o-forno.jpg, se genera con `npm run foto`).
-export const fotoOForno = () => asset('o-forno.jpg') ?? fotoAntigua;
+// La foto es la del gancho: assets/lareira.jpg si existe; si no, el horno dibujado (assets/o-forno.jpg, `npm run foto`).
+export const fotoOForno = () => asset('lareira.jpg') ?? asset('o-forno.jpg') ?? fotoAntigua;
 export const O_FORNO: Omit<WebEjemplo, 'foto'> = {nombre: 'O Forno', lugar: 'Panadería · Corcubión', texto: 'Pan de leña cada mañana', boton: 'Reservar'};
 
 // Posiciones del móvil compartidas entre las escenas 2 y 3 (centro de la base, en px)
