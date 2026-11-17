@@ -62,12 +62,70 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "¿Cuánto cuesta una web?", "acceptedAnswer": {"@type": "Answer", "text": "490 € la Web base y 840 € la Web ampliada de 5 páginas, con IVA incluido. Es un precio cerrado: lo sabes antes de empezar."}},
-    {"@type": "Question", "name": "¿Cuánto se tarda?", "acceptedAnswer": {"@type": "Answer", "text": "Entre 7 y 15 días laborables (de lunes a viernes, sin festivos). Cuentan desde que apruebas el boceto, haces el primer pago y tenemos tus fotos, textos y accesos. Te daremos la fecha concreta antes de empezar."}},
-    {"@type": "Question", "name": "¿Cómo se paga?", "acceptedAnswer": {"@type": "Answer", "text": "50 % al empezar y 50 % al entregar la web."}},
-    {"@type": "Question", "name": "¿El dominio es mío?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. El dominio va siempre a tu nombre. El primer año de dominio y hosting está incluido."}},
-    {"@type": "Question", "name": "¿Qué pasa después del primer año?", "acceptedAnswer": {"@type": "Answer", "text": "El primer año va incluido. Desde el segundo, la renovación cuesta 150 € al año con IVA incluido: renovamos dominio y hosting, mantenemos la web funcionando y te hacemos una actualización pequeña. El dominio sigue siendo tuyo."}},
-    {"@type": "Question", "name": "Ya estoy en Google Maps o en Instagram. ¿Necesito una web?", "acceptedAnswer": {"@type": "Answer", "text": "Maps e Instagram ayudan, pero enseñan poco y no los controlas tú. En tu web pones tu carta, tus precios o tus habitaciones como quieres, en dos idiomas, y la enlazas desde Maps e Instagram. Además, revisamos tu ficha de Google al empezar."}}
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "490 € la Web base y 840 € la Web ampliada de 5 páginas, con IVA incluido. Es un precio cerrado: lo sabes antes de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto se tarda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entre 7 y 15 días laborables (de lunes a viernes, sin festivos). Cuentan desde que apruebas el boceto, haces el primer pago y tenemos tus fotos, textos y accesos. Te daremos la fecha concreta antes de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se paga?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "50 % al empezar y 50 % al entregar la web."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El dominio es mío?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El dominio va siempre a tu nombre. El primer año de dominio y hosting está incluido."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa después del primer año?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El primer año va incluido. Si quieres que sigamos cuidando tu web desde el segundo año, la renovación cuesta 150 € al año con IVA incluido: renovamos dominio y hosting, mantenemos la web funcionando y te hacemos una actualización pequeña. El dominio sigue siendo tuyo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo llevarme mi web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Te entregamos el código y los archivos de tu web para que puedas seguir con otro profesional o proveedor. El dominio sigue siendo tuyo. Si la web utiliza servicios externos, te explicamos qué cuentas y conexiones hay que mantener o trasladar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo cambiar el contenido sin pediros ayuda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, podemos preparar la web para que actualices determinados contenidos por tu cuenta, como noticias, eventos o textos. Esta opción se presupuesta aparte, salvo que ya esté incluida en el servicio contratado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ya estoy en Google Maps o en Instagram. ¿Necesito una web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Maps e Instagram ayudan, pero enseñan poco y no los controlas tú. En tu web pones tu carta, tus precios o tus habitaciones como quieres, en dos idiomas, y la enlazas desde Maps e Instagram. Además, revisamos tu ficha de Google al empezar."
+      }
+    }
   ]
 }
 </script>
@@ -305,12 +363,16 @@ a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
 .fijos .cifra{font-weight:800;font-stretch:66%;font-size:2.75rem;line-height:1;letter-spacing:-.015em;text-align:right;white-space:nowrap}
 .fijos .cifra small{font-size:1rem;font-weight:600;font-stretch:100%;letter-spacing:0;color:var(--tinta-2)}
 .fijos p{grid-column:1/-1;color:var(--tinta-2)}
-.carta > li{display:flex;align-items:baseline;gap:.75rem;padding:1rem 0}
-.carta .nombre{flex:0 1 auto;min-width:0}
-.carta .nombre small{display:block;font-size:var(--t-s);color:var(--tinta-2);line-height:1.5}
-.carta .guia{flex:1 1 1.5rem;min-width:1.5rem;border-bottom:2px dotted var(--linea);transform:translateY(-.3em)}
-.carta .precio{flex:none;font-weight:750;font-stretch:72%;font-size:1.5rem;white-space:nowrap}
+.extras__grupo .carta{border-top:0}
+.carta > li{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:.5rem var(--e-3);padding:1.5rem 0}
+.carta .precio{font-weight:750;font-stretch:72%;font-size:1.5rem;text-align:right;white-space:nowrap}
+.carta .precio small{display:block;font-weight:500;font-stretch:100%;font-size:var(--t-s);line-height:1.5;color:var(--tinta-2)}
 .carta h3{font-size:1.125rem;font-weight:650;font-stretch:100%;letter-spacing:0;line-height:1.35;margin:0}
+.carta p{grid-column:1/-1;font-size:var(--t-s);line-height:1.5;color:var(--tinta-2)}
+.carta .carta__alcance{margin-top:.25rem}
+.propiedad{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--e-4) var(--e-6);margin-top:var(--e-5);padding-top:var(--e-4);border-top:1px solid var(--linea)}
+.propiedad h3{font-size:1.5rem;line-height:1.2;margin-bottom:.75rem}
+.propiedad p{color:var(--tinta-2);font-size:var(--t-s)}
 
 /* Pueblos */
 .pueblos > li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--e-2) var(--e-5);align-items:baseline;padding:var(--e-4) 0}
@@ -424,10 +486,8 @@ a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
   .pegatina{top:var(--e-3);right:var(--e-2);width:5.75rem;height:5.75rem;font-size:.875rem}
   .incluyen{padding:var(--e-3) var(--e-2)}
   .fijos .cifra{font-size:2.25rem}
-  .carta > li{flex-wrap:wrap;gap:.25rem .75rem}
-  .carta .nombre{flex:1 1 60%}
-  .carta .guia{display:none}
-  .carta .precio{margin-left:auto}
+  .carta > li{gap:.5rem 1rem}
+  .propiedad{grid-template-columns:minmax(0,1fr);gap:var(--e-4)}
   .reparto{grid-template-columns:1fr;gap:var(--e-3)}
   .cierre__acciones,.cierre__acciones .boton{width:100%}
   .preguntas summary{font-size:1.125rem}
@@ -609,6 +669,16 @@ a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
         <p><strong>Atención:</strong> de lunes a viernes, salvo festivos. Te respondemos en un máximo de dos días laborables.</p>
         <p>Todos los precios incluyen IVA.</p>
       </div>
+      <div class="propiedad" aria-label="Tu web y tu autonomía">
+        <div>
+          <h3>Tu web, con libertad para seguir por tu cuenta</h3>
+          <p>Pagas la creación de tu web y decides si quieres que sigamos cuidándola. El mantenimiento es opcional y no tiene permanencia. Si prefieres llevarte la web, te entregamos su código y archivos para que puedas alojarla con otro proveedor.</p>
+        </div>
+        <div>
+          <h3>¿Quieres actualizarla tú?</h3>
+          <p>Podemos preparar una forma sencilla de cambiar los contenidos que necesites. Lo acordamos contigo y lo presupuestamos según lo que quieras editar.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -616,24 +686,78 @@ a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
     <div class="wrap">
       <div class="titulo">
         <h2 id="t-extras">Añadidos y mantenimiento</h2>
-        <p>Solo si los necesitas. Te damos el precio cerrado antes de empezar.</p>
+        <p>Solo si los necesitas. Te damos el precio cerrado antes de empezar. Todos los precios incluyen IVA.</p>
       </div>
       <div class="extras__rejilla">
-        <ul class="tablilla fijos">
+        <div class="extras__grupo">
+          <ul class="tablilla fijos" aria-label="Mantenimiento de tu web">
+            <li>
+              <h3>Mantenimiento</h3>
+              <div class="cifra num">150&nbsp;€ <small>al año</small></div>
+              <p>Desde el segundo año. Renovamos tu dominio y el hosting, mantenemos la web funcionando y te hacemos una actualización pequeña.</p>
+            </li>
+          </ul>
+          <ul class="tablilla carta" aria-label="Cambios y contenidos para tu web">
           <li>
-            <h3>Mantenimiento</h3>
-            <div class="cifra num">150&nbsp;€ <small>al año</small></div>
-            <p>Desde el segundo año. Renovamos tu dominio y el hosting, mantenemos la web funcionando y te hacemos una actualización pequeña.</p>
+            <h3>Cambios adicionales</h3>
+            <span class="precio num">desde 55&nbsp;€</span>
+            <p>Para cambiar textos, fotos u otros detalles después de entregar la web. Agrupamos los cambios y te damos el precio antes de empezar.</p>
           </li>
-        </ul>
-        <ul class="tablilla carta" aria-label="Añadidos para tu web">
-          <li><div class="nombre"><h3>Tercer idioma</h3><small>Gallego, francés, alemán…</small></div><span class="guia" aria-hidden="true"></span><span class="precio num">120&nbsp;€</span></li>
-          <li><div class="nombre"><h3>Calendario de disponibilidad</h3><small>Desde Google Calendar o el iCal de Booking o Airbnb, para que vean tus fechas libres y te escriban directo</small></div><span class="guia" aria-hidden="true"></span><span class="precio num">100&nbsp;€</span></li>
-          <li><div class="nombre"><h3>Conexión con tus herramientas</h3></div><span class="guia" aria-hidden="true"></span><span class="precio num">50&nbsp;€</span></li>
-          <li><div class="nombre"><h3>Venta de algunos productos</h3></div><span class="guia" aria-hidden="true"></span><span class="precio num">desde 350&nbsp;€</span></li>
-          <li><div class="nombre"><h3>Blog</h3></div><span class="guia" aria-hidden="true"></span><span class="precio num">750–850&nbsp;€</span></li>
-          <li><div class="nombre"><h3>Reservas y citas online</h3></div><span class="guia" aria-hidden="true"></span><span class="precio num">desde 850&nbsp;€</span></li>
-          <li><div class="nombre"><h3>Tienda online completa</h3></div><span class="guia" aria-hidden="true"></span><span class="precio num">desde 1.900&nbsp;€</span></li>
+          <li>
+            <h3>Tablón de noticias y eventos</h3>
+            <span class="precio num">desde 80&nbsp;€<small>al año</small></span>
+            <p>Una sección de tu web para mostrar noticias, actividades o próximos eventos. Puedes añadir y actualizar las publicaciones por tu cuenta desde una herramienta sencilla.</p>
+          </li>
+          <li>
+            <h3>Recogida automática de contenidos</h3>
+            <span class="precio num">desde 150&nbsp;€<small>pago único</small></span>
+            <p>Alimenta tu tablón con información de otras webs o fuentes de datos. La integración recoge las novedades, las organiza y completa los campos acordados. Tú revisas cada propuesta y decides qué se publica.</p>
+            <p class="carta__alcance">Incluye una fuente y una base de datos. Confirmamos la compatibilidad y el alcance antes de empezar. El tablón se contrata aparte si tu web todavía no tiene una sección compatible.</p>
+          </li>
+          <li>
+            <h3>Mantenimiento de conectores</h3>
+            <span class="precio num">desde 20&nbsp;€<small>al mes</small></span>
+            <p>Revisamos y mantenemos las conexiones que alimentan tu tablón de noticias y eventos. El presupuesto detalla las conexiones y tareas incluidas.</p>
+            <p class="carta__alcance">Cada fuente adicional suma 10&nbsp;€/mes y cada base de datos adicional, otros 10&nbsp;€/mes. La configuración de nuevas conexiones se presupuesta aparte.</p>
+          </li>
+          </ul>
+        </div>
+        <ul class="tablilla carta" aria-label="Otros añadidos para tu web">
+          <li>
+            <h3>Tercer idioma</h3>
+            <span class="precio num">120&nbsp;€</span>
+            <p>Añade otro idioma a tu web para atender a más clientes: gallego, francés, alemán…</p>
+          </li>
+          <li>
+            <h3>Calendario de disponibilidad</h3>
+            <span class="precio num">100&nbsp;€</span>
+            <p>Muestra tus fechas libres desde Google Calendar o el iCal de Booking o Airbnb para que tus clientes puedan consultarlas y escribirte directamente.</p>
+          </li>
+          <li>
+            <h3>Integraciones con tus herramientas</h3>
+            <span class="precio num">desde 50&nbsp;€</span>
+            <p>Conectamos tu web con las herramientas de tu negocio, como un CRM, Slack o un programa de inventario, para mostrar información o intercambiar datos. Presupuestamos el desarrollo según lo que necesites conectar.</p>
+          </li>
+          <li>
+            <h3>Venta de algunos productos</h3>
+            <span class="precio num">desde 350&nbsp;€</span>
+            <p>Añade una selección de productos a tu web para que tus clientes puedan verlos y hacerte un pedido.</p>
+          </li>
+          <li>
+            <h3>Blog</h3>
+            <span class="precio num">750–850&nbsp;€</span>
+            <p>Publica artículos y novedades de tu negocio en una sección propia que puedas actualizar.</p>
+          </li>
+          <li>
+            <h3>Reservas y citas online</h3>
+            <span class="precio num">desde 850&nbsp;€</span>
+            <p>Permite que tus clientes consulten la disponibilidad y reserven desde tu web. Adaptamos el sistema a cómo organizas tus citas o servicios.</p>
+          </li>
+          <li>
+            <h3>Tienda online completa</h3>
+            <span class="precio num">desde 1.900&nbsp;€</span>
+            <p>Vende desde tu web con catálogo, carrito y pago online. Podrás gestionar tus productos y pedidos.</p>
+          </li>
         </ul>
       </div>
     </div>
@@ -732,7 +856,15 @@ a{color:inherit;text-decoration-thickness:1.5px;text-underline-offset:.22em}
         </details>
         <details>
           <summary>¿Qué pasa después del primer año?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
-          <p>El primer año va incluido. Desde el segundo, la renovación cuesta 150 € al año con IVA incluido: renovamos dominio y hosting, mantenemos la web funcionando y te hacemos una actualización pequeña. El dominio sigue siendo tuyo.</p>
+          <p>El primer año va incluido. Si quieres que sigamos cuidando tu web desde el segundo año, la renovación cuesta 150 € al año con IVA incluido: renovamos dominio y hosting, mantenemos la web funcionando y te hacemos una actualización pequeña. El dominio sigue siendo tuyo.</p>
+        </details>
+        <details>
+          <summary>¿Puedo llevarme mi web?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p>Sí. Te entregamos el código y los archivos de tu web para que puedas seguir con otro profesional o proveedor. El dominio sigue siendo tuyo. Si la web utiliza servicios externos, te explicamos qué cuentas y conexiones hay que mantener o trasladar.</p>
+        </details>
+        <details>
+          <summary>¿Puedo cambiar el contenido sin pediros ayuda?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <p>Sí, podemos preparar la web para que actualices determinados contenidos por tu cuenta, como noticias, eventos o textos. Esta opción se presupuesta aparte, salvo que ya esté incluida en el servicio contratado.</p>
         </details>
         <details>
           <summary>Ya estoy en Google Maps o en Instagram. ¿Necesito una web?<svg aria-hidden="true"><use href="#i-chevron"/></svg></summary>
