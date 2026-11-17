@@ -10,4 +10,6 @@ Pon aquí los archivos con estos nombres exactos. Todos son opcionales: si falta
 - `musica.mp3`: música de fondo (al 20 %, baja al 8 % mientras habla la voz).
 - `iceberg.mp4`: plano del iceberg de OpenArt para el fondo de la escena 3. Sin él se dibuja en SVG.
 
-Estos archivos no se suben a GitHub (están en `.gitignore`).
+`o-forno.jpg` no lo pongas tú: es la foto del horno dibujado, se genera con `npm run foto` y sí se sube a GitHub.
+
+Los vídeos y audios no se suben a GitHub (están en `.gitignore`).

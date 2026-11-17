@@ -7,7 +7,7 @@ import {entrada} from '../../comun/movimiento';
 import {color, fuente, tam} from '../../comun/tokens';
 import {ZONA_RECT} from '../../comun/zonaSegura';
 import {ESCENAS, TEXTOS} from '../guion';
-import {MOVIL_ESC2, O_FORNO} from '../web-ejemplo';
+import {MOVIL_ESC2, O_FORNO, fotoOForno} from '../web-ejemplo';
 
 /** Título de arriba y etiqueta 10 %: la escena 3 los reutiliza para fundirlos. */
 export const TituloLoQueVes: React.FC<{desde?: number; inmediato?: boolean}> = ({desde = 4, inmediato}) => (
@@ -38,7 +38,7 @@ export const LoQueVes: React.FC = () => {
     <FondoPiedra>
       <TituloLoQueVes />
       <div style={{position: 'absolute', inset: 0, opacity: vMovil, transform: `translateY(${(1 - vMovil) * 50}px)`}}>
-        <Movil web={O_FORNO} bx={MOVIL_ESC2.bx} by={MOVIL_ESC2.by} escala={escalaMovilEsc2(frame, total)} />
+        <Movil web={{...O_FORNO, foto: fotoOForno()}} bx={MOVIL_ESC2.bx} by={MOVIL_ESC2.by} escala={escalaMovilEsc2(frame, total)} />
       </div>
       <Etiqueta10 v={v10} />
     </FondoPiedra>

@@ -16,6 +16,10 @@ export const ESCENAS = {
 
 export const LOGO_DESDE = 3;
 
+// Horno de O Forno detrás del gancho (en frames). Se ve desde el frame 0 y se funde con la escena 2
+// mientras entra el móvil. Para el bucle, el cierre lo vuelve a fundir detrás de su texto al final.
+export const FORNO = {saleDesde: 76, saleHasta: 100, vuelveEnCierre: 12};
+
 export const TEXTOS = {
   gancho: ['ChatGPT te hace una web en 5 minutos.', 'Esto es lo que *NO* te hace.'],
   ganchoSegundoGolpe: 1.35, // segundos dentro de la escena

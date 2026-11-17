@@ -6,7 +6,7 @@ import {entrada, salida, SUAVE} from '../../comun/movimiento';
 import {color, fuente, tam} from '../../comun/tokens';
 import {ZONA_RECT} from '../../comun/zonaSegura';
 import {CAPAS, ICEBERG} from '../guion';
-import {LINEA_AGUA, MOVIL_ESC2, MOVIL_PUNTA, O_FORNO} from '../web-ejemplo';
+import {LINEA_AGUA, MOVIL_ESC2, MOVIL_PUNTA, O_FORNO, fotoOForno} from '../web-ejemplo';
 import {Etiqueta10, TituloLoQueVes} from './LoQueVes';
 
 const ALTO_MUNDO = 3620;
@@ -72,7 +72,7 @@ export const Iceberg: React.FC = () => {
 
       <div style={{position: 'absolute', left: 0, top: 0, width: 1080, height: ALTO_MUNDO, transform: `translateY(${-camara}px)`}}>
         <Mundo dibujarIceberg={!fondoVideo} vAgua={vAgua} />
-        <Movil web={O_FORNO} bx={bx} by={by} escala={escala} />
+        <Movil web={{...O_FORNO, foto: fotoOForno()}} bx={bx} by={by} escala={escala} />
       </div>
 
       <div style={{opacity: fuera}}>
